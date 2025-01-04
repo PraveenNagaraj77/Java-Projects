@@ -54,8 +54,4 @@ The project is designed with a modular approach, using multiple classes to repre
 5. **Composition**:
    - Composition is used in the `HotelManager` class, where it contains instances of the `Room` and `Reservation` classes. This means that the `HotelManager` class does not inherit from `Room` or `Reservation`, but instead, it manages and uses these objects to perform the necessary operations. This relationship allows for better flexibility and organization within the code.
 
-## Usage
-1. **Compile the Code**:
-   - To compile the Java program, you need to run the Java compiler. This will create the necessary class files from the source code:
-   ```bash
-   javac Main.java
+
