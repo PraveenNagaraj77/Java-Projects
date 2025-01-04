@@ -1,80 +1,61 @@
-# **Banking System Project**
+# Hotel Reservation System
 
-## **Overview**
+## Overview
+The **Hotel Reservation System** is a Java-based application designed to manage hotel operations such as room bookings, cancellations, and reservation management. This system uses a menu-driven interface and incorporates Object-Oriented Programming (OOP) principles to provide a modular and efficient solution for managing hotel reservations. The application ensures ease of use for both customers and hotel administrators.
 
-The Banking System is a console-based application that simulates the basic functionality of a real-world banking system. It allows users to create savings and current accounts, deposit and withdraw funds, calculate interest, and view transaction histories. Additionally, the system includes an admin panel that provides an overview of all accounts in the system.
+## Features
+1. **View Available Rooms**:
+   - The system allows users to view a list of rooms that are currently available for booking. It provides details like room number, type (e.g., Single, Double, Suite), and price per night.
 
-This project was developed in **Java**, utilizing object-oriented programming concepts to create classes for **BankAccount**, **SavingsAccount**, **CurrentAccount**, and **AdminPanel**. The system features secure login, transaction handling, and account management functionalities.
+2. **Book a Room**:
+   - Customers can book a room by entering their details (name, contact, and email), along with the room number and the number of nights they wish to stay. The system calculates the total cost for the stay based on the room's price and the duration of the stay.
 
-## **Key Features**
+3. **Cancel a Reservation**:
+   - Customers can cancel their reservation by providing their name. Once canceled, the system updates the room’s availability status, allowing the room to be booked by others.
 
-### 1. **Account Creation**
-Users can create two types of accounts:
-- **Savings Account**: Allows the user to earn interest on their balance.
-- **Current Account**: Provides an overdraft limit for withdrawals beyond the balance.
+4. **View Reservations**:
+   - Hotel administrators can view all active reservations, including customer details and the total cost of each booking. This helps manage room availability and track reservations.
 
-### 2. **Account Operations**
-- **Deposit**: Users can deposit funds into their account.
-- **Withdraw**: Users can withdraw funds, with overdraft limits available for current accounts.
-- **Interest Calculation**: Savings accounts earn interest based on the balance and a user-specified interest rate.
-- **Transaction History**: Users can view a list of all transactions performed on their account (deposits, withdrawals, interest calculations).
+5. **Room Price Management**:
+   - The system supports multiple room types (e.g., Single, Double, Suite) with different pricing. Administrators can adjust the price for each room type as needed.
 
-### 3. **Authentication**
-- **PIN-based Authentication**: Users must enter a PIN to log into their accounts. The application ensures that the correct PIN is entered before allowing access.
+## Project Structure
+The project is designed with a modular approach, using multiple classes to represent key components of the hotel reservation process. Each class is responsible for specific functionality within the system.
 
-### 4. **Admin Panel**
-- The admin panel is accessible only by an administrator and provides an overview of all accounts in the system.
-- It lists account numbers, holders' names, and balances, offering a way for the admin to manage and monitor account details.
+### 1. **Room Class**:
+   - This class represents an individual room in the hotel. It holds information such as the room number, type (Single, Double, Suite), price per night, and the room's availability status (whether it is booked or available). The room class is essential for managing room details and availability.
 
-### 5. **User-Friendly Interface**
-- The system provides a simple menu-based interface for users to choose from a variety of banking operations. Each option is clearly labeled for ease of navigation.
+### 2. **Customer Class**:
+   - The `Customer` class stores the personal information of the customer, such as name, contact number, and email address. It ensures that customer details are properly associated with each booking.
 
-## **Technologies Used**
-- **Java**: The core programming language used to implement the banking system.
-- **Object-Oriented Programming (OOP)**: The application uses OOP principles such as inheritance, polymorphism, and encapsulation to define the banking system's functionality.
-- **Data Structures**: Collections such as `HashMap` and `ArrayList` are used to store and manage accounts and transaction history.
+### 3. **Reservation Class**:
+   - The `Reservation` class links a customer to a room and tracks booking details, such as the number of nights booked and the total cost for the stay. It calculates the total cost based on the room price and the number of nights the customer intends to stay.
 
-## **Classes and Functionality**
+### 4. **HotelManager Class**:
+   - The `HotelManager` class is the central class that handles all core operations, including managing room availability, making reservations, canceling bookings, and viewing all reservations. This class also manages interactions between the `Room`, `Customer`, and `Reservation` classes to perform necessary actions based on user input.
 
-### 1. **BankAccount (Abstract Class)**
-- **Attributes**: `accountNumber`, `accountHolderName`, `balance`, `pin`.
-- **Methods**: 
-    - `deposit()`
-    - `withdraw()`
-    - `calculateInterest()`
-    - `viewTransactionHistory()`
-    - Abstract method `calculateInterest()` for subclasses to implement their own version of interest calculation.
+### 5. **Main Class**:
+   - The `Main` class provides the entry point for the program and presents a menu-driven interface to users. It allows customers and hotel administrators to interact with the system, selecting different options such as viewing available rooms, booking a room, or canceling a reservation.
 
-### 2. **SavingsAccount (Derived Class)**
-- **Additional Attribute**: `interestRate`.
-- **Method**: `calculateInterest()`, which calculates and adds interest to the balance based on the interest rate.
+## OOP Principles Used
 
-### 3. **CurrentAccount (Derived Class)**
-- **Additional Attribute**: `overdraftLimit`.
-- **Method**: `withdraw()`, which allows withdrawals up to the overdraft limit.
+1. **Encapsulation**:
+   - Encapsulation is used to protect the data within the `Room` and `Customer` classes. This means that the details of the room (e.g., price, availability) and the customer's personal information are hidden from other parts of the system. Access to these details is controlled through public methods, ensuring that the data is securely managed and modified only in appropriate ways.
 
-### 4. **AdminPanel**
-- **Methods**: Displays details of all accounts, including account number, holder’s name, and balance.
+2. **Inheritance**:
+   - The project could use inheritance if different types of rooms were implemented, such as `SingleRoom`, `DoubleRoom`, or `SuiteRoom`. These subclasses would inherit common properties (e.g., room number, price) from the base `Room` class while adding or overriding specific details (e.g., price variations or additional services).
 
-### 5. **BankingSystem (Main Class)**
-- **Methods**: 
-    - Manages user interaction, including account creation, login, and executing banking operations like deposit, withdraw, and interest calculation.
-    - Contains a loop to handle the menu-based navigation.
+3. **Abstraction**:
+   - Abstraction is achieved through the `HotelManager` class, which abstracts the complex operations related to room booking and cancellation. The end user or administrator interacts with simplified methods (e.g., `bookRoom()`, `cancelReservation()`) without needing to understand the underlying complexities of room management or reservation tracking.
 
-## **How to Run the Application**
+4. **Polymorphism**:
+   - Polymorphism could be applied in the case of different types of reservations, such as standard bookings and group bookings. A method like `calculateTotalCost()` could behave differently for each type of reservation, offering flexibility in how the system calculates costs based on different criteria (e.g., discounts for groups).
 
-1. **Clone the repository** or **download** the project files to your local machine.
-2. **Open the project** in your favorite Java IDE (e.g., IntelliJ IDEA, Eclipse).
-3. **Compile and run** the `BankingSystem.java` file.
-4. Follow the interactive menu to create accounts, log in, and perform operations like deposit, withdrawal, and interest calculations.
+5. **Composition**:
+   - Composition is used in the `HotelManager` class, where it contains instances of the `Room` and `Reservation` classes. This means that the `HotelManager` class does not inherit from `Room` or `Reservation`, but instead, it manages and uses these objects to perform the necessary operations. This relationship allows for better flexibility and organization within the code.
 
-## **Future Enhancements**
-- **Password Protection**: Instead of using a PIN, introduce a more secure password system.
-- **External Database**: Store user data and transaction history in an external database (e.g., MySQL, PostgreSQL).
-- **ATM Withdrawal**: Simulate ATM operations for deposit and withdrawal with a physical ATM interface.
-- **Loan System**: Implement a loan system that allows users to borrow money and manage repayments.
-- **Graphical User Interface (GUI)**: Convert the console-based application to a GUI-based one using JavaFX or Swing.
-
-## **Conclusion**
-
-This project is a basic simulation of a banking system that demonstrates how to model real-world entities using object-oriented principles. The system is designed to be modular, allowing for easy extensions and improvements in the future.
+## Usage
+1. **Compile the Code**:
+   - To compile the Java program, you need to run the Java compiler. This will create the necessary class files from the source code:
+   ```bash
+   javac Main.java
